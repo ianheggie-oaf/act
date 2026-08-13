@@ -83,10 +83,13 @@ module ActScraper
   end
 
   def self.run
+    count = 0
     scrape do |record|
       puts "Saving #{record[:address]}..."
       ScraperWiki.save_sqlite([:council_reference], record)
+      count += 1
     end
+    puts "Finished - added #{count} records."
   end
 end
 
